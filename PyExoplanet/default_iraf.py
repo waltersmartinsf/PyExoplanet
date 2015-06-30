@@ -1,68 +1,3 @@
-"""
-PyExoplanet
-
-Author: Walter S. Martins-Filho
-email: walter@on.br
-___
-
-Package for data reduction and analysis for of a exoplanet
-
-___
-This package needs:
-
-- IRAF instaled in your machine
-- Pyraf
-- Numpy
-___
-
-"""
-
-#******************************************************************************
-#Calling the packages
-from pyraf import iraf
-import numpy as np
-import os
-#******************************************************************************
-#change the work directory
-def wdirectory(path):
-    """
-    Change the work directory for a specific path of the data
-    ___
-    path: string, data path in the system
-    """
-    return os.chdir(path)
-
-def ds9(fits):
-    """
-    Open a ds9 view of the specific fits files
-    """
-    return os.system('ds9 '+fits+'&')
-
-#*******************************************************************************
-#Data Reduction Functions
-#
-#This part of the package based in pyraf language for data reduction with IRAF.
-#IRAF (more in: http://iraf.noao.edu/) is a software to reduce astronomical data.
-#The Pyraf is a python interface to work with iraf inside a python script. Because
-#of that, IRAF need to be instaled before the use of this package.
-
-#load usefull packages for exoplanet reduction
-iraf.stsdas()
-iraf.toolbox()
-iraf.noao()
-iraf.astutil()
-iraf.proto()
-iraf.imred()
-iraf.ccdred()
-iraf.digiphot()
-iraf.apphot()
-iraf.images()
-iraf.tv()
-iraf.imutil()
-iraf.headers()
-iraf.immatch()
-iraf.crutil()
-
 #give the default conditions for imexamine
 iraf.imexamine.unlearn()
 iraf.imexamine.frame = 1
@@ -220,7 +155,7 @@ iraf.display.mode = 'ql'
 
 #default for setairmass
 iraf.setairmass.unlearn()
-iraf.setairmass.observatory = ')_.observatory'
+#iraf.setairmass.observatory = )_.observatory
 iraf.setairmass.intype = 'beginning'
 iraf.setairmass.outtype = 'effective'
 iraf.setairmass.ra = 'ra'
@@ -240,7 +175,7 @@ iraf.setairmass.mode = 'ql'
 
 #default for setjd
 iraf.setjd.unlearn()
-iraf.setjd..observatory = ')_.observatory'
+#iraf.setjd..observatory = )_.observatory
 iraf.setjd.date = 'date-obs'
 iraf.setjd.time = 'utmiddle'
 iraf.setjd.ra = 'ra'
@@ -334,40 +269,3 @@ iraf.fitskypars.mode = 'ql'
 
 #default for photpars
 iraf.photpars.unlearn()
-iraf.photpars.weighting = 'constant'
-iraf.photpars.apertures = '16'
-iraf.photpars.zmag = 23.2
-iraf.photpars.mkapert = 'no'
-iraf.photpars.mode = 'ql'
-
-#default for phot
-iraf.phot.skyfile = 'xyfile'
-iraf.phot.coords = 'xyfile'
-iraf.phot.output = 'default'
-iraf.phot.plotfile = ''
-iraf.phot.datapars = ''
-iraf.phot.centerpars = ''
-iraf.phot.fitskypars = ''
-iraf.phot.photpars = ''
-iraf.phot.interactive = 'no'
-iraf.phot.radplots = 'no'
-iraf.phot.icommands = ''
-iraf.phot.gcommands = ''
-iraf.phot.wcsin = ')_.wcsin'
-iraf.phot.wcsout = ')_.wcsout'
-iraf.phot.cache = ')_.cache'
-iraf.phot.verify = 'no'
-iraf.phot.update = 'no'
-iraf.phot.verbose = 'no'
-iraf.phot.graphics = 'stdgraph'
-iraf.phot.display = 'stdimage'
-iraf.phot.mode = 'ql'
-
-#default for txdump
-iraf.txdump.unlearn()
-#iraf.txdump.texfiles = ''
-iraf.txdump.fields = 'image,xc,yc,ifilter,xairmass,otime,mag,merr'
-iraf.txdump.expr = '(id==1)'
-iraf.txdump.headers = 'yes'
-iraf.txdump.parameters = 'yes'
-iraf.txdump.mode = 'ql'

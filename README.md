@@ -7,10 +7,13 @@ ___
 
 Package for data reduction and analysis for of a exoplanet
 
+Is usefull to install the software Ureka (http://ssb.stsci.edu/ureka/) is a collection
+of astronomical softwares that give to you an IRAF installation, ds9, pyraf and more.
+
 ___
 This package needs:
 
-- IRAF instaled in your machine
+- IRAF
 - Pyraf
 - Numpy
 
